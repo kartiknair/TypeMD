@@ -46,6 +46,7 @@ input[type="text"]:active {
 
 .files-list {
   list-style: none;
+  padding: 0;
 }
 
 .file {

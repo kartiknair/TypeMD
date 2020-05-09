@@ -1,6 +1,7 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/storage";
 
 import firebaseConfig from "lib/firebaseConfig";
 
@@ -15,3 +16,4 @@ export const providers = {
 };
 
 export const db = firebaseApp.firestore();
+export const store = firebaseApp.storage();

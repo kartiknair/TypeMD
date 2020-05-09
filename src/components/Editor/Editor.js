@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useSWR, { mutate } from "swr";
-import { db } from "lib/firebase";
+import { db, store } from "lib/firebase";
 import { Link } from "@reach/router";
 import MarkdownEditor from "rich-markdown-editor";
 
@@ -31,6 +31,25 @@ const Editor = ({ userId, fileId }) => {
     mutate([userId, fileId]);
   };
 
+  const uploadImage = async (file) => {
+    if (!file.size >= 1000000) {
+      const doc = await db
+        .collection("users")
+        .doc(userId)
+        .collection("images")
+        .add({
+          name: file.name,
+        });
+
+      const uploadTask = await store
+        .ref()
+        .child(`users/${userId}/${doc.id}-${file.name}`)
+        .put(file);
+
+      return uploadTask.ref.getDownloadURL();
+    }
+  };
+
   if (error) return <p>We had an issue while getting the data</p>;
   else if (!file) return <p>Loading...</p>;
   else {
@@ -51,10 +70,12 @@ const Editor = ({ userId, fileId }) => {
         </header>
         <div className="editor">
           <MarkdownEditor
-            defaultValue={value}
+            defaultValue={file.content}
             onChange={(getValue) => {
               setValue(getValue());
             }}
+            uploadImage={uploadImage}
+            onShowToast={(message) => alert(message)}
           />
         </div>
       </div>
