@@ -22,6 +22,7 @@ const App = ({ signInWithGoogle, signInWithGithub, signOut, user }) => {
           <div className="user-profile">
             <a
               className="log-out-link"
+              href="#log-out"
               onClick={() => {
                 signOut();
                 navigate("/");

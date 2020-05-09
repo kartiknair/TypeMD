@@ -53,7 +53,6 @@ const Dashboard = ({ userId }) => {
   if (error) return <p>Error loading data!</p>;
   else if (!data) return <p>Loading...</p>;
   else {
-    console.log("Data was returned: ", data);
     return (
       <div>
         <form
@@ -85,7 +84,7 @@ const Dashboard = ({ userId }) => {
                   {file.name}
                 </Link>
                 <button
-                  onClick={(e) => {
+                  onClick={() => {
                     deleteFile(userId, file.id).then(() => mutate(userId));
                   }}
                   className="delete-button"

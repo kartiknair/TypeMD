@@ -16,6 +16,8 @@
 
 .log-out-link {
   margin-right: 1rem;
+  text-decoration: none;
+  color: #181a1b;
 }
 
 .user-profile {
@@ -43,7 +45,7 @@ button {
   background-color: #ffffff;
   padding: 0.6rem 1.5rem;
   border: solid 1px #999999;
-  color: #111111;
+  color: #181a1b;
   border-radius: 0.2rem;
   transition: all 0.2s ease;
 }
@@ -51,7 +53,7 @@ button {
 button:hover,
 button:focus {
   cursor: pointer;
-  border: solid 1px #111111;
+  border: solid 1px #181a1b;
 }
 
 button:disabled {
