@@ -1,0 +1,88 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.header h2 {
+  margin: 1.5rem 0;
+}
+
+.avatar {
+  height: 2.5rem;
+  border-radius: 50%;
+}
+
+.log-out-link {
+  margin-right: 1rem;
+}
+
+.user-profile {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.sign-in-page {
+  margin-top: 3rem;
+  width: 100%;
+  text-align: center;
+}
+
+.sign-in-buttons {
+  width: 50%;
+  margin: 1.5rem 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+button {
+  font-size: 0.9rem;
+  background-color: #ffffff;
+  padding: 0.6rem 1.5rem;
+  border: solid 1px #999999;
+  color: #111111;
+  border-radius: 0.2rem;
+  transition: all 0.2s ease;
+}
+
+button:hover,
+button:focus {
+  cursor: pointer;
+  border: solid 1px #111111;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  color: #999999;
+}
+
+button:disabled:hover {
+  cursor: not-allowed;
+  border: solid 1px #999999;
+}
+
+.log-out-link {
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .sign-in-buttons {
+    width: 80%;
+    margin: 1.5rem 10%;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    width: 80%;
+    margin: 5% 10%;
+  }
+
+  .sign-in-buttons {
+    flex-direction: column;
+    height: 8rem;
+  }
+}

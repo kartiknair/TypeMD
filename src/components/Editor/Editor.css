@@ -1,0 +1,45 @@
+.editor button {
+  font-size: 1rem;
+  background-color: none;
+  padding: 0;
+  border: none;
+  color: inherit;
+  border-radius: 0;
+}
+
+.editor button:hover {
+  border: none;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.save-button {
+  margin-left: auto;
+}
+
+.back-button {
+  font-weight: 500;
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 0.2rem;
+  text-decoration: none;
+  background: #eeeeee;
+  margin-right: 1rem;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  border: none;
+  background-color: #d4d4d4;
+}
+
+@media (max-width: 440px) {
+  .save-button {
+    margin: 1.5rem auto 0 0;
+  }
+}

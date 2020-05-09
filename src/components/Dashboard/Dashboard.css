@@ -1,0 +1,75 @@
+.new-file-form,
+.files-list {
+  width: 70%;
+  margin: 1.5rem 15%;
+}
+
+input[type="text"] {
+  width: 70%;
+  padding: 0.6rem;
+  border: 1px solid #999999;
+  border-radius: 0.2rem;
+  transition: all 0.2s ease;
+}
+
+input[type="text"]::placeholder {
+  font-size: 0.9rem;
+}
+
+input[type="text"]:focus,
+input[type="text"]:active {
+  outline: none;
+  border: 1px solid #111111;
+}
+
+.new-file-form button {
+  margin-left: 2%;
+  width: 28%;
+}
+
+@media (max-width: 768px) {
+  .new-file-form,
+  .files-list {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  input[type="text"] {
+    width: 60%;
+  }
+
+  .new-file-form button {
+    margin-left: 2%;
+    width: 38%;
+  }
+}
+
+.files-list {
+  list-style: none;
+}
+
+.file {
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.file .link {
+  color: #111111;
+  text-decoration: none;
+}
+
+.delete-button {
+  border: none;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+}
+
+.delete-button:focus,
+.delete-button:active,
+.delete-button:hover {
+  font-size: 1rem;
+  border: none;
+}

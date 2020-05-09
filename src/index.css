@@ -1,13 +1,86 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: hk-grotesk;
+  src: url("fonts/HKGrotesk-Regular.otf");
+  font-weight: 400;
+  font-style: regular;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+@font-face {
+  font-family: hk-grotesk;
+  src: url("fonts/HKGrotesk-Italic.otf");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: hk-grotesk;
+  src: url("fonts/HKGrotesk-SemiBold.otf");
+  font-weight: 500;
+  font-style: regular;
+}
+
+@font-face {
+  font-family: hk-grotesk;
+  src: url("fonts/HKGrotesk-SemiBoldItalic.otf");
+  font-weight: 500;
+  font-style: italic;
+}
+
+* {
+  font-family: hk-grotesk, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+code,
+code span {
+  font-size: 0.8rem;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1900px) {
+  html {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 2400px) {
+  html {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 3000px) {
+  html {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 3400px) {
+  html {
+    font-size: 3rem;
+  }
+}
+
+body {
+  width: 60%;
+  margin: 5% 20%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
