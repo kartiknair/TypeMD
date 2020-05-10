@@ -36,15 +36,21 @@ const Editor = ({ user, userId, fileId }) => {
     }
   }, [file, value]);
 
+  const onUnload = (event) => {
+    event.preventDefault();
+    event.returnValue = "You have unsaved changes!";
+    return "You have unsaved changes!";
+  };
+
   useEffect(() => {
     if (file && !(file.content === value)) {
       console.log("Added listener");
-      window.addEventListener("beforeunload", (event) => {
-        event.preventDefault();
-        event.returnValue = "You have unsaved changes!";
-        return "You have unsaved changes!";
-      });
+      window.addEventListener("beforeunload", onUnload);
+    } else {
+      window.removeEventListener("beforeunload", onUnload);
     }
+
+    return () => window.removeEventListener("beforeunload", onUnload);
   });
 
   const saveChanges = () => {
