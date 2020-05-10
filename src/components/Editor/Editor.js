@@ -44,7 +44,6 @@ const Editor = ({ user, userId, fileId }) => {
 
   useEffect(() => {
     if (file && !(file.content === value)) {
-      console.log("Added listener");
       window.addEventListener("beforeunload", onUnload);
     } else {
       window.removeEventListener("beforeunload", onUnload);
