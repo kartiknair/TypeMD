@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useSWR, { mutate } from "swr";
 import { db } from "lib/firebase";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import "./Dashboard.css";
 
 const getUserFiles = async (userId) => {
@@ -46,9 +46,15 @@ const deleteFile = async (userId, fileId) => {
   return res;
 };
 
-const Dashboard = ({ userId }) => {
+const Dashboard = ({ user, userId }) => {
   const [nameValue, setNameValue] = useState("");
   const { data, error } = useSWR(userId, getUserFiles);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [user]);
 
   if (error) return <p>Error loading data!</p>;
   else if (!data) return <p>Loading...</p>;

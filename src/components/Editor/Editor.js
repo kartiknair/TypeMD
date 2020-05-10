@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useSWR, { mutate } from "swr";
 import { db, store } from "lib/firebase";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import MarkdownEditor from "rich-markdown-editor";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -19,9 +19,22 @@ const getFile = async (userId, fileId) => {
   return doc.data();
 };
 
-const Editor = ({ userId, fileId }) => {
-  const [value, setValue] = useState("");
+const Editor = ({ user, userId, fileId }) => {
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [user]);
+
   const { data: file, error } = useSWR([userId, fileId], getFile);
+  const [value, setValue] = useState(null);
+
+  useEffect(() => {
+    if (file !== undefined && value === null) {
+      console.log("Set initial content");
+      setValue(file.content);
+    }
+  }, [file, value]);
 
   useEffect(() => {
     if (file && !(file.content === value)) {
