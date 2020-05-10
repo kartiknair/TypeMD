@@ -43,3 +43,9 @@
     margin: 1.5rem auto 0 0;
   }
 }
+
+.Toastify__close-button,
+.Toastify__close-button:hover {
+  border: none;
+  border-radius: 0;
+}

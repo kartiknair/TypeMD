@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useSWR, { mutate } from "swr";
 import { db, store } from "lib/firebase";
 import { Link } from "@reach/router";
 import MarkdownEditor from "rich-markdown-editor";
+import { ToastContainer, toast } from "react-toastify";
 
 import "./Editor.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const getFile = async (userId, fileId) => {
   const doc = await db
@@ -19,9 +21,17 @@ const getFile = async (userId, fileId) => {
 
 const Editor = ({ userId, fileId }) => {
   const [value, setValue] = useState("");
+  const { data: file, error } = useSWR([userId, fileId], getFile);
 
-  const { data: file, error } = useSWR([userId, fileId], getFile, {
-    onSuccess: (data) => setValue(data.content),
+  useEffect(() => {
+    if (file && !(file.content === value)) {
+      console.log("Added listener");
+      window.addEventListener("beforeunload", (event) => {
+        event.preventDefault();
+        event.returnValue = "You have unsaved changes!";
+        return "You have unsaved changes!";
+      });
+    }
   });
 
   const saveChanges = () => {
@@ -29,6 +39,7 @@ const Editor = ({ userId, fileId }) => {
       content: value,
     });
     mutate([userId, fileId]);
+    toast.success("🎉 Your changes have been saved!");
   };
 
   const uploadImage = async (file) => {
@@ -75,9 +86,10 @@ const Editor = ({ userId, fileId }) => {
               setValue(getValue());
             }}
             uploadImage={uploadImage}
-            onShowToast={(message) => alert(message)}
+            onShowToast={(message) => toast(message)}
           />
         </div>
+        <ToastContainer />
       </div>
     );
   }

@@ -28,9 +28,9 @@ const getUserFiles = async (userId) => {
   }
 };
 
-const createFile = async (userId, newFile) => {
+const createFile = async (userId, fileName) => {
   let res = await db.collection("users").doc(userId).collection("files").add({
-    name: newFile,
+    name: fileName,
     content: "",
   });
   return res;
