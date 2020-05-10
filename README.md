@@ -1,3 +1,9 @@
+# TypeMD
+
+A fast & beautiful markdown editor built using React, Firebase, & SWR. I speak more about how it was made in [this blog post](https://kartikn.me/writing/react-firebase-swr).
+
+## Running locally:
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
